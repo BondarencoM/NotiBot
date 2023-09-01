@@ -5,7 +5,7 @@ const update = async (req, res) => {
     const { GoogleSpreadsheet } = require('google-spreadsheet')
     const { JWT } = require('google-auth-library')
     const request = require('request');
-
+    console.log("Using service agent with email: " + process.env.google_api_client_email)
     const jwt = new JWT({
         email: process.env.google_api_client_email,
         key: process.env.google_api_private_key,
