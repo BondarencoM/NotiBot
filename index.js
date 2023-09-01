@@ -8,7 +8,7 @@ const update = async (req, res) => {
     console.log("Using service agent with email: " + process.env.google_api_client_email)
     const jwt = new JWT({
         email: process.env.google_api_client_email,
-        key: process.env.google_api_private_key,
+        key: process.env.google_api_private_key.replaceAll('\\n', '\n',),
         scopes: [
             'https://www.googleapis.com/auth/spreadsheets',
           ],
