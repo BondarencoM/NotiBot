@@ -28,16 +28,13 @@ const update = async (req, res) => {
             const options = {
                 method: 'POST',
                 url: 'https://whin2.p.rapidapi.com/send2group',
-                qs: {
-                    gid: process.env.group_id,
-                },
                 headers: {
                     'content-type': 'application/json',
                     'X-RapidAPI-Key': process.env.wa_bot_key,
                     'X-RapidAPI-Host': 'whin2.p.rapidapi.com'
                 },
                 body: {
-                    text: week.get('Name') + ' is taking out the trash this week. Thanks 🚀',
+                    text: week.get('Name') + ' is taking out the trash this week. Thanks ❤',
                 },
                 json: true,
             };
