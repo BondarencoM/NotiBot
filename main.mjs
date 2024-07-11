@@ -1,10 +1,10 @@
-const express = require('express')
-require('dotenv').config()
+import { GoogleSpreadsheet } from 'google-spreadsheet'
+import { JWT } from 'google-auth-library'
+import request from 'request'
+import dotenv from 'dotenv'
+dotenv.config()
 
-const update = async (req, res) => {
-    const { GoogleSpreadsheet } = require('google-spreadsheet')
-    const { JWT } = require('google-auth-library')
-    const request = require('request');
+export async function update() {
     console.log("Using service agent with email: " + process.env.google_api_client_email)
     const jwt = new JWT({
         email: process.env.google_api_client_email,
@@ -45,15 +45,8 @@ const update = async (req, res) => {
                 if (response.statusCode !== 200) {
                     throw response, body
                 }
-
-                res.status(200).send("OK")
             });
             break;
         }
     }
 }
-
-const app = express()
-
-app.post('/update', update)
-app.listen(process.env.PORT || 3000)
